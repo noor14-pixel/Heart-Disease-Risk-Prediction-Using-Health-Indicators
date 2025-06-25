@@ -1,120 +1,125 @@
- Heart Disease Prediction 
-📌 Objective
+
+# 🫀 Heart Disease Prediction
+
+## 📌 Objective
+
 Build a binary classification model to predict whether an individual is at risk of heart disease based on their medical attributes. This task involves data cleaning, exploratory analysis, model training, and evaluation.
 
-📂 Dataset
-Name: Heart Disease UCI Dataset
+---
 
-Source: Kaggle - UCI Heart Disease Dataset
+## 📂 Dataset
 
-Description: Contains medical and demographic data of patients, with features like age, cholesterol level, chest pain type, maximum heart rate, etc.
+* **Name**: Heart Disease UCI Dataset
+* **Source**: [Kaggle - UCI Heart Disease Dataset](https://www.kaggle.com/ronitf/heart-disease-uci)
+* **Description**: Contains medical and demographic data of patients, with features like age, cholesterol level, chest pain type, maximum heart rate, etc.
 
-🛠️ Tasks Performed
-✅ Cleaned dataset and handled missing values
+---
 
-✅ Conducted extensive Exploratory Data Analysis (EDA)
+## 🛠️ Tasks Performed
 
-✅ Built two classification models: Logistic Regression and Decision Tree
+* ✅ Cleaned dataset and handled missing values
+* ✅ Conducted extensive Exploratory Data Analysis (EDA)
+* ✅ Built two classification models: **Logistic Regression** and **Decision Tree**
+* ✅ Evaluated models using **Accuracy**, **Confusion Matrix**, and **ROC Curve**
+* ✅ Identified important predictive features
 
-✅ Evaluated models using Accuracy, Confusion Matrix, and ROC Curve
+---
 
-✅ Identified important predictive features
+## 📊 Exploratory Data Analysis (EDA) – Key Findings
 
-📊 Exploratory Data Analysis (EDA) – Key Findings
-🔹 1. Heart Disease Presence (Target: num)
-Majority of patients show some level of heart disease (num > 0).
+### 🔹 1. Heart Disease Presence (Target: `num`)
 
-Converted into binary target:
+* Majority of patients show some level of heart disease (num > 0).
+* Converted into binary target:
 
-1 → presence of heart disease
+  * `1` → presence of heart disease
+  * `0` → no disease
 
-0 → no disease
+---
 
-🔹 2. Correlation Matrix
-Positively correlated with disease: oldpeak, exang
+### 🔹 2. Correlation Matrix
 
-Negatively correlated: thalch (max heart rate)
+* **Positively correlated with disease**: `oldpeak`, `exang`
+* **Negatively correlated**: `thalch` (max heart rate)
+* **Weak predictors**: `chol`, `trestbps`
 
-Weak predictors: chol, trestbps
+---
 
-🔹 3. Feature Distributions
-Skewed distributions in chol, thalch, and oldpeak
+### 🔹 3. Feature Distributions
 
-Some features (e.g. oldpeak) are right-skewed
+* *Skewed distributions* in `chol`, `thalch`, and `oldpeak`
+* Some features (e.g. `oldpeak`) are *right-skewed*
+* Outliers present, especially in `chol`
 
-Outliers present, especially in chol
+---
 
-🔹 4. Boxplots
-Clear outliers in:
+### 🔹 4. Boxplots
 
-chol (cholesterol)
+* Clear outliers in:
 
-oldpeak (ST depression)
+  * `chol` (cholesterol)
+  * `oldpeak` (ST depression)
+  * `thalch` (heart rate)
 
-thalch (heart rate)
+---
 
-🔹 5. Pairplot Analysis
-Patients with heart disease tend to:
+### 🔹 5. Pairplot Analysis
 
-Have higher oldpeak
+* Patients with heart disease tend to:
 
-Have lower thalch
+  * Have **higher oldpeak**
+  * Have **lower thalch**
+  * Show unique patterns in `cp` (chest pain type)
 
-Show unique patterns in cp (chest pain type)
+---
 
-🔹 6. Chest Pain Type vs Heart Disease
-Asymptomatic pain is strongly associated with heart disease.
+### 🔹 6. Chest Pain Type vs Heart Disease
 
-Typical angina more common among healthy patients.
+* **Asymptomatic pain** is strongly associated with heart disease.
+* **Typical angina** more common among healthy patients.
+* `cp` is a strong visual and statistical predictor.
 
-cp is a strong visual and statistical predictor.
+---
 
-🤖 Model Training & Evaluation
-📍 Models Used:
-Logistic Regression
+## 🤖 Model Training & Evaluation
 
-Decision Tree Classifier
+### 📍 Models Used:
 
-📉 Evaluation Metrics:
-Accuracy: 100% for both models
+* **Logistic Regression**
+* **Decision Tree Classifier**
 
-ROC-AUC: 1.0
+### 📉 Evaluation Metrics:
 
-Confusion Matrix: No false positives or negatives
+* **Accuracy**: 100% for both models
+* **ROC-AUC**: 1.0
+* **Confusion Matrix**: No false positives or negatives
 
-⚠️ Note: These perfect scores suggest possible overfitting or data leakage due to the small dataset or lack of cross-validation.
+⚠️ *Note:* These perfect scores suggest **possible overfitting** or **data leakage** due to the small dataset or lack of cross-validation.
 
-💡 Feature Importance
-Logistic Regression:
-cp_asymptomatic
+---
 
-oldpeak
+## 💡 Feature Importance
 
-thalch
+### Logistic Regression:
 
-exang
+* `cp_asymptomatic`
+* `oldpeak`
+* `thalch`
+* `exang`
+* `slope_flat`
 
-slope_flat
+### Decision Tree:
 
-Decision Tree:
-cp_asymptomatic
+* `cp_asymptomatic`
+* `oldpeak`
+* `thalch`
+* `ca`
+* `slope_flat`, `slope_downsloping`
 
-oldpeak
+🧠 **Conclusion**: The most critical predictors are:
 
-thalch
+* **Chest pain type (cp)**
+* **ST depression (oldpeak)**
+* **Exercise-induced angina (exang)**
+* **Maximum heart rate achieved (thalch)**
 
-ca
-
-slope_flat, slope_downsloping
-
-🧠 Conclusion: The most critical predictors are:
-
-Chest pain type (cp)
-
-ST depression (oldpeak)
-
-Exercise-induced angina (exang)
-
-Maximum heart rate achieved (thalch)
-
-These features are clinically relevant, indicating practical utility in healthcare prediction syste
